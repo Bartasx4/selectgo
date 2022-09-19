@@ -1,0 +1,11 @@
+{% for generation in assets %}
+    <fieldset id="gen_{{loop.index0+1}}">
+        {% for pokemon in generation %}
+            <div id="#{{pokemon[0]}}" class="grid-element" onclick="toggle_element(this.id)">
+                <img name="{{pokemon[1]}}" alt="{{pokemon[1]}}" src="/static/sprites/{{pokemon[0]}}.png"></img>
+                <label>{{pokemon[1]}}</label>
+            </div>
+        {% endfor %}
+    </fieldset>
+ {% endfor %}
+ <script>
