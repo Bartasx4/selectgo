@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-body {
-    text-align: center;
-=======
 * {
     user-select:none;
     -moz-user-select:none;
@@ -57,5 +53,4 @@ body {
   padding-top: .8em;
   border: 1px solid #ccc;
   border-top: none;
->>>>>>> a4c9c82 (Added options and sliders. Need to add sliders to cookies)
 }

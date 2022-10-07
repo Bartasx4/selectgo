@@ -6,10 +6,6 @@
 .grid-element {
     display: inline-grid;
     position: relative;
-<<<<<<< HEAD
-    padding: 5px;
-=======
->>>>>>> a4c9c82 (Added options and sliders. Need to add sliders to cookies)
     text-align: center;
     margin: 0.4em 0.2em;
     border: 1px solid #ddd;
@@ -19,28 +15,13 @@
 
 .grid-element img {
     margin-top: .5em;
-<<<<<<< HEAD
-    height: 5em;
-=======
     height: 7em;
->>>>>>> a4c9c82 (Added options and sliders. Need to add sliders to cookies)
 }
 
 .grid-element:hover {
     box-shadow: 3px 3px 10px 0px black;
 }
 
-<<<<<<< HEAD
-.show {
-    background-image: linear-gradient(to top, #39ff39 0%, white 70%);
-}
-
-.hide {
-    background-image: linear-gradient(to top, #ff0000 0%, white 70%);
-}
-
-=======
->>>>>>> a4c9c82 (Added options and sliders. Need to add sliders to cookies)
 .grid-element label {
     position: absolute;
     justify-self: center;
@@ -52,8 +33,6 @@
     font-family: lato,sans-serif;
     font-weight: bold;
     background-image: linear-gradient( to bottom,hsla(0,0%,100%,0.9) 0%,hsla(0,0%,100%,0.889) 11.2%,hsla(0,0%,100%,0.856) 21%,hsla(0,0%,100%,0.806) 29.6%,hsla(0,0%,100%,0.742) 37.1%,hsla(0,0%,100%,0.667) 43.7%,hsla(0,0%,100%,0.583) 49.6%,hsla(0,0%,100%,0.495) 55%,hsla(0,0%,100%,0.405) 60%,hsla(0,0%,100%,0.317) 64.8%,hsla(0,0%,100%,0.233) 69.6%,hsla(0,0%,100%,0.158) 74.6%,hsla(0,0%,100%,0.094) 80%,hsla(0,0%,100%,0.044) 85.9%,hsla(0,0%,100%,0.011) 92.5%,hsla(0,0%,100%,0) 100% );
-<<<<<<< HEAD
-=======
 }
 
 legend {
@@ -61,5 +40,4 @@ legend {
     position: absolute;
     z-index: 1;
     display: none;
->>>>>>> a4c9c82 (Added options and sliders. Need to add sliders to cookies)
 }
