@@ -1,0 +1,43 @@
+#bottom_panel img {
+    width: 7em;
+    height: 7em;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    right: 1em;
+    bottom: 5em;
+    z-index: 2;
+    cursor: pointer;
+}
+
+#bottom_command_box {
+	/* display: grid;
+	grid-template-columns: auto 8em;
+	grid-gap: 1em; */
+	position: fixed;
+	padding: 0.5em 0em;
+	background-color: #00000082;
+	z-index: 1;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+#bottom_command_box input {
+	/* height: auto; */
+	background-color: white;
+	font-size: 1.5em;
+	padding: .2em;
+	width: 70%;
+}
+
+#bottom_command_box input:focus {
+    background-color: #7bbcc2;
+    color: black;
+}
+
+#copy-command {
+	font-size: 1.5em;
+	padding: .15em;
+}

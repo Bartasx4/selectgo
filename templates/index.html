@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,4 +28,92 @@
         load('/show_table', function(content){document.getElementById('grid').innerHTML=content});
     </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Select Go</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/grid.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/top_panel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bottom_panel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slider.css') }}">
+    <script src="{{ url_for('static', filename='js/toggle_element.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/load.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/open_tab.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/get_command.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cookies.js') }}"></script>
+
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div id="top_panel"></div>
+    <div id="bottom_panel">
+        <img id="up-arrow" src="/static/graphics/up-arrow.png" alt="Do gory" />
+        <div id="bottom_command_box">
+            <input id="command-line" type="text" />
+            <button id="copy-command" name="copy-command" onclick="copy_to_clipboard();">Kopiuj</button>
+        </div>
+    </div>
+
+    <div id="tab-generations" class="tab">
+        <button class="tab-generation" onclick="open_tab(event, 'gen1')">Generacja 1</button>
+        <button class="tab-generation" onclick="open_tab(event, 'gen2')">Generacja 2</button>
+        <button class="tab-generation" onclick="open_tab(event, 'gen3')">Generacja 3</button>
+        <button class="tab-generation" onclick="open_tab(event, 'gen4')">Generacja 4</button>
+        <button class="tab-generation" onclick="open_tab(event, 'gen5')">Generacja 5</button>
+        <button class="tab-generation" onclick="open_tab(event, 'gen6')">Generacja 6</button>
+        <button class="tab-generation" onclick="open_tab(event, 'gen7')">Generacja 7</button>
+        <button class="tab-generation" onclick="open_tab(event, 'gen8')">Generacja 8</button>
+    </div>
+
+    <div id="gen1" class="tabcontent grid-layout"></div>
+    <div id="gen2" class="tabcontent grid-layout"></div>
+    <div id="gen3" class="tabcontent grid-layout"></div>
+    <div id="gen4" class="tabcontent grid-layout"></div>
+    <div id="gen5" class="tabcontent grid-layout"></div>
+    <div id="gen6" class="tabcontent grid-layout"></div>
+    <div id="gen7" class="tabcontent grid-layout"></div>
+    <div id="gen8" class="tabcontent grid-layout"></div>
+
+    <script>
+        var from_distance, to_distance, from_day, to_day, distance_label, days_label
+        var toggle_data = {};
+        {% for key, value in toggle_data.items() %}
+            toggle_data['{{key}}'] = {{value}};
+        {% endfor %}
+
+        get_command();
+
+        $("#up-arrow").click(function() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+            return false;
+        });
+
+        var add_pokemons = function(gen ,content){
+                            document.getElementById('gen'+gen).innerHTML += content;}
+
+        function load_pokemons(generation=1){
+            var argument = 'generation='+generation;
+            load('/get-pokemons', function(content){add_pokemons(String(generation), content)}, argument).done(function(){
+                if (generation < 1){
+                    load_pokemons(generation+1);
+                }
+            });
+        }
+
+        load('/top-panel', function(content){document.getElementById('top_panel').innerHTML = content;}).done(function(){
+            load_slider();
+        });
+
+
+
+        // load_pokemons();
+    </script>
+</body>
+>>>>>>> a4c9c82 (Added options and sliders. Need to add sliders to cookies)
 </html>

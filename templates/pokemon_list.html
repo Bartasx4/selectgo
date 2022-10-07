@@ -1,0 +1,6 @@
+{% for pokemon in pokemon_list %}
+    <div id="#{{pokemon[0]}}" class="grid-element{{pokemon[2]}}" onclick="toggle_element(this.id)">
+        <img name="{{pokemon[1]}}" alt="{{pokemon[1]}}" src="/static/sprites/{{pokemon[0]}}.png"></img>
+        <label>{{pokemon[1]}}</label>
+    </div>
+{% endfor %}

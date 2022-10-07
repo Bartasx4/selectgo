@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 function toggle_element(id) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             toggle_class(id, parseInt(this.responseText));
+=======
+function toggle_element(id, base_class='grid-element') {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            toggle_class(id, parseInt(this.responseText), base_class);
+            get_command();
+>>>>>>> a4c9c82 (Added options and sliders. Need to add sliders to cookies)
         }
     };
     xhttp.open('POST', '/toggle', true);
@@ -10,9 +19,14 @@ function toggle_element(id) {
     xhttp.send('id='+id);
 }
 
+<<<<<<< HEAD
 function toggle_class(id, status) {
     var element = document.getElementById(id);
     const base_class = 'grid-element';
+=======
+function toggle_class(id, status, base_class) {
+    var element = document.getElementById(id);
+>>>>>>> a4c9c82 (Added options and sliders. Need to add sliders to cookies)
     toggle_data[id] = status;
     switch (status) {
         case 0:
