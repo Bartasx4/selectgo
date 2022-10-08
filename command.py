@@ -29,7 +29,10 @@ class Command:
     @property
     def command(self):
         command = ''
-        for key, status in self.toggle_data.items():
+        for raw_key, status in self.toggle_data.items():
+            key = raw_key
+            if '#' in key:
+                key = int(key[1:])
             if status == 0:
                 continue
             if len(command) > 0:
