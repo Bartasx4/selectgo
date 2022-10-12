@@ -102,7 +102,6 @@ class Command:
 
     def change_slider(self, slider, value):
         self.toggle_data[slider] = value
-        print(slider, value)
         return self.data[slider]
 
     def top_panel(self):

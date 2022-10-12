@@ -69,7 +69,7 @@
         function load_pokemons(generation=1){
             var argument = 'generation='+generation;
             load('/get-pokemons', function(content){add_pokemons(String(generation), content)}, argument).done(function(){
-                if (generation < 1){
+                if (generation < 8){
                     load_pokemons(generation+1);
                 }
             });
