@@ -58,8 +58,15 @@ def load_cookie():
 @app.route('/save-cookie', methods=['POST'])
 def save_cookie(response=''):
     resp = make_response(response)
-    resp.set_cookie('toggle-data', str(command.save_cookie).replace('\'', '"'))
+    resp.set_cookie('toggle-data', command.save_cookie)
     return resp
+
+
+@app.route('/remove-cookie', methods=['GET', 'POST'])
+def remove_cookie():
+    response = make_response('Cookie removed')
+    response.set_cookie('toggle-data', '')
+    return response
 
 
 if __name__ == '__main__':

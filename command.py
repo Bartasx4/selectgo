@@ -120,7 +120,8 @@ class Command:
                 continue
             else:
                 cookie[key] = status
-        return cookie
+        cookie_str = str(cookie).replace('\'', '"')
+        return cookie_str
 
     def load_cookie(self, cookie):
         for key, status in cookie.items():
