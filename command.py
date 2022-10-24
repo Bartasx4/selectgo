@@ -14,13 +14,16 @@ class Command:
     DESCRIPTION = {'traded': 'z wymiany', 'gbl': 'liga', 'hatched': 'wyklute',
                    'onlyeggs': 'tylko z jajek', 'costume': 'eventowe'}
     GENERATIONS = [151, 100, 135, 107, 156, 72, 88, 96, 15]
+    DISTANCE_MAX = 500
+    DAYS_MAX = 300
 
     def __init__(self):
         self.pokemon_count = sum(self.GENERATIONS)
         self.toggle_data_pokemons = {self.correct_index(str(index+1)): 0 for index in range(self.pokemon_count)}
         self.toggle_data_other = self.REGION | self.RARITY | self.ROCKET | \
-                                 self.BOSS | self.NOT_WILD | self.SPECJAL | self.LOW | self.SLIDERS
-        self.toggle_data = self.toggle_data_pokemons | self.toggle_data_other
+                                 self.BOSS | self.NOT_WILD | self.SPECJAL | self.LOW
+        self.toggle_data_sliders = self.SLIDERS
+        self.toggle_data = self.toggle_data_pokemons | self.toggle_data_other | self.toggle_data_sliders
 
     @property
     def data(self):
@@ -29,10 +32,11 @@ class Command:
     @property
     def command(self):
         command = ''
-        for raw_key, status in self.toggle_data.items():
+        for raw_key in (self.toggle_data_pokemons | self.toggle_data_other).keys():
+            status = self.toggle_data[raw_key]
             key = raw_key
             if '#' in key:
-                key = int(key[1:])
+                key = str(int(key[1:]))
             if status == 0:
                 continue
             if len(command) > 0:
@@ -43,7 +47,39 @@ class Command:
                 command += '!' + key
             else:
                 ValueError(self)
+        from_distance = int(self.toggle_data['from_distance'])
+        to_distance = int(self.toggle_data['to_distance'])
+        from_day = int(self.toggle_data['from_day'])
+        to_day = int(self.toggle_data['to_day'])
+        # ------ Distance ------
+        if from_distance == to_distance and (from_distance == 0 or from_distance == self.DISTANCE_MAX):
+            pass
+        elif from_distance == to_distance:
+            command = self.__add_command(command, f'distance{from_distance}')
+        elif from_distance > to_distance:
+            command = self.__add_command(command, f'distance{from_distance}-')
+        elif from_distance > 0:
+            command = self.__add_command(command, f'distance{from_distance}-{to_distance}')
+        else:
+            command = self.__add_command(command, f'distance-{to_distance}')
+        # ------ Days ------
+        if from_day == to_day and (from_day == 0 or from_day == self.DAYS_MAX):
+            pass
+        elif from_day == to_day:
+            command = self.__add_command(command, f'age{from_day}')
+        elif from_day > to_day:
+            command = self.__add_command(command, f'age{from_day}-')
+        elif from_day > 0:
+            command = self.__add_command(command, f'age{from_day}-{to_day}')
+        else:
+            command = self.__add_command(command, f'age-{to_day}')
         return command
+
+    def __add_command(self,commands, new_command):
+        if len(commands) > 0:
+            commands += '&'
+        commands += new_command
+        return commands
 
     def pokemon_list(self, generation=0):
         assets = Assets(self.pokemon_count)

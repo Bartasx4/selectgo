@@ -54,7 +54,7 @@ function send_slider(slider) {
     var data = 'slider='+name+'&value='+value;
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-
+            get_command();
         }
     };
     xhttp.open('POST', '/slider', true);
